@@ -1,6 +1,6 @@
 class ExpensesController < ApplicationController
   def index
-   @expenses = Expense.order("date DESC")
+   @expenses = current_user.expenses
    if params[:concept].present?
      @expenses = @expenses.where("concept LIKE ?", "%#{params[:concept]}%")
     end
